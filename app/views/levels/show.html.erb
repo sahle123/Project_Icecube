@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Level id:</b>
+  <%= @level.level_ID %>
+</p>
+
+<p>
+  <b>User name:</b>
+  <%= @level.user_name %>
+</p>
+
+<p>
+  <b>Avg rating:</b>
+  <%= @level.avg_rating %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @level.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @level.description %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @level.type %>
+</p>
+
+<p>
+  <b>Restriction:</b>
+  <%= @level.restriction %>
+</p>
+
+<p>
+  <b>Level string:</b>
+  <%= @level.level_string %>
+</p>
+
+
+<%= link_to 'Edit', edit_level_path(@level) %> |
+<%= link_to 'Back', levels_path %>

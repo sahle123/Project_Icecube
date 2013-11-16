@@ -1,0 +1,37 @@
+<h1>Listing levels</h1>
+
+<table>
+  <tr>
+    <th>Level id</th>
+    <th>User name</th>
+    <th>Avg rating</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Restriction</th>
+    <th>Level string</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @levels.each do |level| %>
+  <tr>
+    <td><%= level.level_ID %></td>
+    <td><%= level.user_name %></td>
+    <td><%= level.avg_rating %></td>
+    <td><%= level.title %></td>
+    <td><%= level.description %></td>
+    <td><%= level.type %></td>
+    <td><%= level.restriction %></td>
+    <td><%= level.level_string %></td>
+    <td><%= link_to 'Show', level %></td>
+    <td><%= link_to 'Edit', edit_level_path(level) %></td>
+    <td><%= link_to 'Destroy', level, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Level', new_level_path %>

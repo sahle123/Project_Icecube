@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  level_ID: 
+  user_name: MyString
+  avg_rating: 
+  title: MyString
+  description: 
+  type: 
+  restriction: 
+  level_string: 
+
+two:
+  level_ID: 
+  user_name: MyString
+  avg_rating: 
+  title: MyString
+  description: 
+  type: 
+  restriction: 
+  level_string: 

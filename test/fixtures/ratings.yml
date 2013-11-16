@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  rating_id: 
+  user_name: MyString
+  level_id: 
+  rating: 
+
+two:
+  rating_id: 
+  user_name: MyString
+  level_id: 
+  rating: 

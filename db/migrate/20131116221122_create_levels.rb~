@@ -1,0 +1,16 @@
+class CreateLevels < ActiveRecord::Migration
+  def change
+    create_table :levels do |t|
+      t.int :level_ID
+      t.string :user_name
+      t.int :avg_rating
+      t.string :title
+      t.text :description
+      t.string :type
+      t.int :restriction
+      t.text :level_string
+
+      t.timestamps
+    end
+  end
+end
