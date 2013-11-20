@@ -1,14 +1,17 @@
 source 'http://rubygems.org'
 
-ruby '1.9.2'
+ruby '1.9.3'
 
 gem 'rails', '3.1.0'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-group :development do
-	gem 'sqlite3'
+group :development, :test do
+        gem 'sqlite3'
+  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'capybara'
+  gem 'rspec-rails'
 end
 
 
@@ -34,4 +37,8 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'cucumber-rails'
+  gem 'cucumber-rails-training-wheels'
 end
+
+gem 'haml'
