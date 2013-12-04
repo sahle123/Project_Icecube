@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-	debugger
     @users = User.all
 
     respond_to do |format|
@@ -26,11 +25,12 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-
+		User.update_attributes(:reputation => 0)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
     end
+		
   end
 
   # GET /users/1/edit

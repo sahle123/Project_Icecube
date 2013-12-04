@@ -1,13 +1,13 @@
 class CreateLevels < ActiveRecord::Migration
   def change
     create_table :levels do |t|
-      t.int :level_ID
+      t.integer :level_id
       t.string :user_name
-      t.int :avg_rating
+      t.integer :avg_rating
       t.string :title
       t.text :description
       t.string :type
-      t.int :restriction
+      t.integer :restriction
       t.text :level_string
 
       t.timestamps

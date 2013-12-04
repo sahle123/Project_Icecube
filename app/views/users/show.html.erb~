@@ -22,7 +22,7 @@
 
 <p>
   <b>Status:</b>
-  <%= @user.mod %>
+  <%= @user.superuser %>
 </p>
 
 <p>

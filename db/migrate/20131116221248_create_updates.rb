@@ -5,7 +5,6 @@ class CreateUpdates < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.string :user_name
-
       t.timestamps
     end
   end

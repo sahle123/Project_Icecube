@@ -25,13 +25,13 @@ ActiveRecord::Schema.define(:version => 20131116222122) do
   end
 
   create_table "levels", :force => true do |t|
-    t.integer  "level_ID"
+    t.integer  "level_id"
     t.string   "user_name"
     t.integer  "avg_rating"
     t.string   "title"
     t.text     "description"
-    t.string   "type"
-    t.integer  "restriction"
+    t.integer  "restriction_move"
+    t.integer  "restriction_time"
     t.text     "level_string"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -66,11 +66,12 @@ ActiveRecord::Schema.define(:version => 20131116222122) do
 
   create_table "users", :force => true do |t|
     t.string   "user_name"
+    t.string   "encrypted_password"
     t.string   "email"
     t.datetime "birth_date"
-    t.string   "status"
     t.text     "slogan"
     t.integer  "reputation"
+    t.boolean  "mod"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
