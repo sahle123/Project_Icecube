@@ -17,16 +17,14 @@ class LevelsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @level }
+      format.json { render json: @level } 
     end
   end
 
   # GET /levels/new
   # GET /levels/new.json
   def new
-    debugger
     @level = Level.new
-    debugger
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @level }
@@ -41,9 +39,7 @@ class LevelsController < ApplicationController
   # POST /levels
   # POST /levels.json
   def create
-    debugger
     @level = Level.new(params[:level])
-    debugger
     respond_to do |format|
       if @level.save
         format.html { redirect_to @level, notice: 'Level was successfully created.' }
