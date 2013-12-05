@@ -1,8 +1,13 @@
+<!-- Variables -->
+<%signed_in = false%>
+
+
+<!-- HTML code -->
 <!DOCTYPE html>
 <html>
 	<head>
+		<!-- id's, classes, and other styles that should be in a stylesheet -->
 		<style>
-			
 			#nav_bar
 			{
 				margin-top: 20px;
@@ -14,18 +19,29 @@
 				padding-right: 20px;
 				font-size: 18px;
 			}
+		</style>	
 
-		</style>		
+		<!-- Page information (i think) -->	
 	  <title>Icecube</title>
 	  <%= stylesheet_link_tag    "application" %>
 	  <%= javascript_include_tag "application" %>
 	  <%= csrf_meta_tags %>
 	</head>
+
+	<!-- Display page -->
 	<body>
-		<p style="float:right; margin-top:0">
-			<%= link_to 'Sign Up'	, new_user_path %>
-			<a href=#'Login'>Login</a>
-		</p>
+		<%if !temp%>
+			<p style="float:right; margin-top:0">
+				<%= link_to 'Sign Up'	, new_user_path %>
+				<a href=#'Login'>Login</a>
+			</p>
+		<%else%>
+			<p style="float:right; margin-top:0">
+				user name here<%=link_to 'Log-out', users_path%>
+			</p>
+		<%end%>
+		<!-- this </br> is very important because it is what separates the 	-->
+		<!-- login/signup from the naviagation nav_bar 											-->
 		</br>
 
 		<ul id="nav_bar">
