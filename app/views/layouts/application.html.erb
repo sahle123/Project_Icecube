@@ -1,17 +1,60 @@
+<!-- Variables -->
+<%signed_in = false%>
+<%show_nav_bar = true%>
+<%show_signup_and_login = true%>
+
+<!-- HTML code -->
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Icecube</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<div style="float:right">
-	<%= link_to 'Sign Up', new_user_path %>
-	<%= link_to 'Login', %>
-	</div>
-<%= yield %>
+	<head>
+	  <title>Icecube</title>
+	  <%= stylesheet_link_tag    "application", :media => "all" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+		<!-- id's, classes, and other styles that should be in a stylesheet -->
+		<style>
+			#nav_bar
+			{
+				margin-top: 20px;
+				text-align: center;
+			}
+			li{
+				display:inline;
+				padding-left: 20px;
+				padding-right: 20px;
+				font-size: 18px;
+			}
+		</style>	
 
-</body>
+		<!-- Page information (i think) -->	
+	</head>
+
+	<!-- Display page -->
+	<body>
+		<%if show_signup_and_login%>
+			<%if !signed_in%>
+				<p style="float:right; margin-top:0">
+					<%= link_to 'Sign Up'	, new_user_path %>
+					<%= link_to 'Sign In', new_session_path %>
+				</p>
+			<%else%>
+				<p style="float:right; margin-top:0">
+					user name here<%=link_to 'Log-out', users_path%>
+				</p>
+			<%end%>
+		<%end%>
+		<!-- this </br> is very important because it is what separates the 	-->
+		<!-- login/signup from the naviagation nav_bar 						-->
+		</br>
+
+		<%if show_nav_bar%>
+			<ul id="nav_bar">
+					<li>Home</li>
+					<li><%= link_to 'Levels', levels_path %></li>
+					<li><%= link_to 'Create Level', new_level_path%></li>
+					<li>News</li>
+			</ul>
+		<%end%>
+		<%= yield %>
+	</body>
 </html>
