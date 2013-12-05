@@ -24,12 +24,23 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
+    debugger
+
     @user = User.new
+    # this is a control variable to toggle the visiblility of the navigation bar
+    # in the application.html.erb file. Using @user will not work because it is
+    # object. 
+    #@show_nav_bar = false
+
+    debugger
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
     end
 		
+    debugger
+
   end
 
   # GET /users/1/edit
@@ -40,8 +51,9 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    debugger
     @user = User.new(params[:user])
-
+    debugger
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
