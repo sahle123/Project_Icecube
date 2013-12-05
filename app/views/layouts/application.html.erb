@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Icecube</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<div style="float:right">
-	<%= link_to 'Sign Up', new_user_path %>
-	</div>
-<%= yield %>
+	<head>
+		<style>
+			
+			#nav_bar
+			{
+				margin-top: 20px;
+				text-align: center;
+			}
+			li{
+				display:inline;
+				padding-left: 20px;
+				padding-right: 20px;
+				font-size: 18px;
+			}
 
-</body>
+		</style>		
+	  <title>Icecube</title>
+	  <%= stylesheet_link_tag    "application" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<p style="float:right; margin-top:0">
+			<%= link_to 'Sign Up'	, new_user_path %>
+			<a href=#'Login'>Login</a>
+		</p>
+		</br>
+
+		<ul id="nav_bar">
+				<li>Home</li>
+				<li>Leves</li>
+				<li>Create Level</li>
+				<li>News</li>
+		</ul>
+
+		<%= yield %>
+
+	</body>
 </html>
