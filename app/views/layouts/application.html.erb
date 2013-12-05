@@ -30,7 +30,7 @@
 
 	<!-- Display page -->
 	<body>
-		<%if !temp%>
+		<%if !signed_in%>
 			<p style="float:right; margin-top:0">
 				<%= link_to 'Sign Up'	, new_user_path %>
 				<a href=#'Login'>Login</a>
