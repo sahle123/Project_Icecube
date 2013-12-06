@@ -1,6 +1,8 @@
 Icecube::Application.routes.draw do
   resources :levels
   resources :users
+  resources :comments
+  resources :updates
   resources :sessions, only: [:new, :create, :destroy]
   root :to => redirect('/levels')
   match '/signup',  to: 'users#new',            via: 'get'
