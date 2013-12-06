@@ -8,7 +8,6 @@
     <th>Title</th>
     <th>Description</th>
     <th>Restriction</th>
-    <th>Restriction</th>
     <th>Level string</th>
     <th></th>
     <th></th>
@@ -22,8 +21,14 @@
     <td><%= level.avg_rating %></td>
     <td><%= level.title %></td>
     <td><%= level.description %></td>
-    <td><%= level.restriction_move %></td>
-    <td><%= level.restriction_move %></td>
+    <td> 
+        <%if level.restriction_move > 0 and not nil%>
+        moves: <%= level.restriction_move%> 
+        <%end%>
+        <%if level.restriction_time > 0 and not nil%> 
+        <%=level.restriction_time%>sec
+        <%end%>
+    </td>
     <td><%= level.level_string %></td>
     <td><%= link_to 'Show', level %></td>
     <td><%= link_to 'Edit', edit_level_path(level) %></td>

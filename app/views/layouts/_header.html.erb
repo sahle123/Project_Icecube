@@ -14,11 +14,11 @@
         <%= link_to "Sign out", signout_path, method: 'delete' %>
       </p>
     <%else%>
-      <p style="float:right; margin-top:0; color:white" >
-        <%= link_to 'Sign In', signin_path %> / 
-        <%= link_to 'Sign Up' , signup_path %> 
+      <p style="float:right; margin-top:0; color:white">
+        <%= link_to "Sign In", signin_path, {:style=>'color:#FFFFFF;'} %> / 
+        <%= link_to 'Sign Up', signup_path, {:style=>'color:#FFFFFF;'} %> 
       </p>
-  <%end%>
+    <%end%>
   <!-- Elements of the navigation bar, have the ability -->
   <!-- to collapse to a single button                   -->
       <nav class="nav-collapse">
