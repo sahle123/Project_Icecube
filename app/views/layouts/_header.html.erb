@@ -9,12 +9,12 @@
       <a class="brand" href="#">Project Ice Cube</a>
       <!-- login/signup from the naviagation nav_bar  -->
     <% if signed_in? %>
-      <p style="float:right; margin-top:0">
+      <p style="float:right; margin-top:0; color:white">
         <%= current_user.user_name %>
         <%= link_to "Sign out", signout_path, method: 'delete' %>
       </p>
     <%else%>
-      <p style="float:right; margin-top:0" >
+      <p style="float:right; margin-top:0; color:white" >
         <%= link_to 'Sign In', signin_path %> / 
         <%= link_to 'Sign Up' , signup_path %> 
       </p>

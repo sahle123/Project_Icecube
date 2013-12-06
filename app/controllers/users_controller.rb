@@ -50,6 +50,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+    sign_in @user
   end
 
   # PUT /users/1
