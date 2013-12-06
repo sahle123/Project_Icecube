@@ -1,7 +1,6 @@
 <!-- Variables -->
 <%signed_in = false%>
 <%show_nav_bar = show_nav_bar?%>
-
 <%show_signup_and_login = show_signup_and_login?%>
 
 <!-- HTML code -->
@@ -48,7 +47,6 @@
 		<!-- login/signup from the naviagation nav_bar 						-->
 		</br>
 
-
 		<%if show_nav_bar%>
 			<ul id="nav_bar">
 					<li>Home</li>
@@ -58,9 +56,7 @@
 			</ul>
 		<%end%>
 		
-
 		<%= yield %>
-
 
 	</body>
 </html>
