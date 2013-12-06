@@ -10,6 +10,8 @@ module ApplicationHelper
 		return false
 	end
 
+	# show_signup_and_login? determinse the visibility of the signup and login
+	# text displayed by the ApplicationHelper. 
 	def show_signup_and_login?
 		if params[:controller] == "users"
 			return false if params[:action] == "new"
