@@ -19,9 +19,9 @@
 			}
 			li{
 				display:inline;
-				padding-left: 20px;
-				padding-right: 20px;
-				font-size: 18px;
+				padding-left: 5px;
+				padding-right: 5px;
+				font-size: 14px;
 			}
 		</style>	
 
@@ -32,41 +32,7 @@
 	<body>
 		<!-- Navigation Bar with Bootstrap CSS -->
 		<%if show_nav_bar%>
-			<div class="navbar navbar-fixed-top navbar-inverse">
-			    <div class="navbar-inner">
-			      <div class="container">
-			        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			          <span class="icon-bar"></span>
-			          <span class="icon-bar"></span>
-			          <span class="icon-bar"></span>
-			        </a>
-			        <a class="brand" href="#">Project Ice Cube</a>
-			        <!-- login/signup from the naviagation nav_bar 	-->
-					<%if show_signup_and_login%>
-						<% if signed_in? %>
-							<p style="float:right; margin-top:0">
-								<%= current_user.user_name %>
-								<%= link_to "Sign out", signout_path, method: 'delete' %>
-							</p>
-						<%else%>
-							<p style="float:right; margin-top:0" >
-								<%= link_to 'Sign In', signin_path %> / 
-								<%= link_to 'Sign Up'	, signup_path %> 
-							</p>
-						<%end%>
-					<%end%>
-					<!-- Elements of the navigation bar, have the ability -->
-					<!-- to collapse to a single button                   -->
-			        <div class="nav-collapse">
-			          <ul class="nav">
-			            <li><%= link_to "News" %></li>
-			            <li><%= link_to 'Levels', levels_path %></li>
-			            <li><%= link_to 'Create Level', new_level_path %></li>
-			          </ul>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
+			<%= render 'layouts/header' %>
 		<%end%>
 		<div class="container">
 		    <div class="row">
