@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131116222122) do
+ActiveRecord::Schema.define(:version => 20131206001052) do
 
   create_table "comments", :force => true do |t|
     t.integer  "comment_id"
@@ -74,6 +74,9 @@ ActiveRecord::Schema.define(:version => 20131116222122) do
     t.boolean  "mod"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
   end
+
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

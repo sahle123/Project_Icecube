@@ -29,7 +29,6 @@ class UsersController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @user }
     end
-		
   end
 
   # GET /users/1/edit

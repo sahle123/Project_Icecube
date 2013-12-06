@@ -1,5 +1,4 @@
 <!-- Variables -->
-<%signed_in = false%>
 <%show_nav_bar = true%>
 <%show_signup_and_login = true%>
 
@@ -15,7 +14,7 @@
 		<style>
 			#nav_bar
 			{
-				margin-top: 20px;
+				margin-top: 40px;
 				text-align: center;
 			}
 			li{
@@ -31,30 +30,51 @@
 
 	<!-- Display page -->
 	<body>
-		<%if show_signup_and_login%>
-			<%if !signed_in%>
-				<p style="float:right; margin-top:0">
-					<%= link_to 'Sign Up'	, new_user_path %>
-					<%= link_to 'Sign In', new_session_path %>
-				</p>
-			<%else%>
-				<p style="float:right; margin-top:0">
-					user name here<%=link_to 'Log-out', users_path%>
-				</p>
-			<%end%>
-		<%end%>
-		<!-- this </br> is very important because it is what separates the 	-->
-		<!-- login/signup from the naviagation nav_bar 						-->
-		</br>
-
+		<!-- Navigation Bar with Bootstrap CSS -->
 		<%if show_nav_bar%>
-			<ul id="nav_bar">
-					<li>Home</li>
-					<li><%= link_to 'Levels', levels_path %></li>
-					<li><%= link_to 'Create Level', new_level_path%></li>
-					<li>News</li>
-			</ul>
+			<div class="navbar navbar-fixed-top navbar-inverse">
+			    <div class="navbar-inner">
+			      <div class="container">
+			        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			          <span class="icon-bar"></span>
+			          <span class="icon-bar"></span>
+			          <span class="icon-bar"></span>
+			        </a>
+			        <a class="brand" href="#">Project Ice Cube</a>
+			        <!-- login/signup from the naviagation nav_bar 	-->
+					<%if show_signup_and_login%>
+						<% if signed_in? %>
+							<p style="float:right; margin-top:0">
+								<%= current_user.user_name %>
+								<%= link_to "Sign out", signout_path, method: 'delete' %>
+							</p>
+						<%else%>
+							<p style="float:right; margin-top:0" >
+								<%= link_to 'Sign In', signin_path %> / 
+								<%= link_to 'Sign Up'	, signup_path %> 
+							</p>
+						<%end%>
+					<%end%>
+					<!-- Elements of the navigation bar, have the ability -->
+					<!-- to collapse to a single button                   -->
+			        <div class="nav-collapse">
+			          <ul class="nav">
+			            <li><%= link_to "News" %></li>
+			            <li><%= link_to 'Levels', levels_path %></li>
+			            <li><%= link_to 'Create Level', new_level_path %></li>
+			          </ul>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
 		<%end%>
-		<%= yield %>
+		<div class="container">
+		    <div class="row">
+		      <div class="span9"><%= yield %></div>
+		      <div class="span3">
+		      </div>
+		    </div>
+		</div>
+		<!-- %= yield % -->
 	</body>
 </html>
