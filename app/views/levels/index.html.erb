@@ -22,11 +22,14 @@
     <td><%= level.title %></td>
     <td><%= level.description %></td>
     <td> 
-        <%if level.restriction_move > 0 and not nil%>
+        <%if level.restriction_move != nil and (level.restriction_move > 0)%>
         moves: <%= level.restriction_move%> 
         <%end%>
-        <%if level.restriction_time > 0 and not nil%> 
+        <%if level.restriction_time != nil and level.restriction_time > 0 %> 
         <%=level.restriction_time%>sec
+        <%end%>
+        <%if level.restriction_time == nil or 0 and level.restriction_move == nil or 0%>
+        none
         <%end%>
     </td>
     <td><%= level.level_string %></td>
