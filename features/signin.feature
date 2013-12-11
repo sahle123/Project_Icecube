@@ -28,6 +28,17 @@ Scenario: successful signup
 	And I click the Sign Up button
 	Then I should be signed in as: "billy"
 
+Scenario: Unsuccessful signup; Same user name
+	Given I am on the signup page
+	When I fill "user_name" with: "brain"
+	And I fill "password" with: "password"
+	And I fill "password_confirmation" with: "password"
+	And I fill "email" with: "brain@ice.com"
+	And I fill "birth_date" with: "12-Sep-1991"
+	And I fill "slogan" with: "I like to think"
+	And I click the Sign Up button
+	Then I should get a same name error
+
 Scenario: Unsuccessful signin
 	Given I am on the signin page
 	When I fill "user_name" with: "error"

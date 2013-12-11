@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
+#   @movies = Movie.find(:all, :order => @sort, :conditions => { :rating => @checked_ratings.keys})
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -39,6 +42,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+
     @user = User.new(params[:user])
 
     respond_to do |format|
@@ -51,6 +55,7 @@ class UsersController < ApplicationController
       end
     end
     sign_in @user
+  
   end
 
   # PUT /users/1

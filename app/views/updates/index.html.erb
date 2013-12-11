@@ -1,0 +1,54 @@
+<h1> News </h1>
+
+
+
+<% @updates.each do |update| %>
+	<div>
+		<h4> <%= update.title %> </h4>
+		<h6>By: <%= update.user_name %></h6>
+		<h6><%= update.created_at %></h6>
+		<div>
+			<%= update.description %>
+		</div>
+		<%= link_to 'Comments' %>
+	</div>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

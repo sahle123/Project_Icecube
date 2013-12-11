@@ -2,8 +2,9 @@ class LevelsController < ApplicationController
   # GET /levels
   # GET /levels.json
   def index
-    @levels = Level.all
-
+    @filter = params[:filter]
+    @restriction = params[:restriction]
+    @levels = Level.find(:all, :order => @filter, :conditions => @restriction)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @levels }

@@ -1,10 +1,17 @@
 Icecube::Application.routes.draw do
+
+
+  #resources :static_pages, only: [:home, :help]
   resources :levels
   resources :users
-  resources :comments
+  resources :commensts
   resources :updates
+  resources :static_pages
   resources :sessions, only: [:new, :create, :destroy]
-  root :to => redirect('/levels')
+
+  match '/',        to: 'static_pages#home',    via: 'get'
+  match '/home',    to: 'static_pages#home',    via: 'get'
+  match '/news',    to: 'updates#index',        via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

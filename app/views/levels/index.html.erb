@@ -1,4 +1,13 @@
 <h1>Listing levels</h1>
+<%= form_tag("/levels", method: "get") do %>
+    <%= label_tag ("Sort By:") %>
+    <%= select_tag(:filter, options_for_select([['Title'],['User_Name'],['Created_at'],['Avg_Rating']])) %>
+    <%= label_tag ("Restrictions:") %>
+    <%= select_tag(:restrictions, options_for_select([['All'],['Both'],['Moves'],['Time'],['None']])) %>
+    <%= submit_tag "Search", class: "btn btn-small btn-primary" %>
+<% end %>
+
+
 
 <table>
   <tr>
