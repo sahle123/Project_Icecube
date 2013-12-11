@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :user_name, :uniqueness => true
   validates :email,     :on => :create, :uniqueness => true
 
+
 	def User.new_remember_token
     	SecureRandom.urlsafe_base64
   	end
