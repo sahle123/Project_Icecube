@@ -1,9 +1,9 @@
 <h1>Listing levels</h1>
 <%= form_tag("/levels", method: "get") do %>
     <%= label_tag ("Sort By:") %>
-    <%= select_tag(:filter, options_for_select([['Title'],['User_Name'],['Created_at'],['Avg_Rating']])) %>
+    <%= select_tag(:filter, options_for_select([['Title','title'],['User Name','user_name'],['Release Date','created_at'],['Rating','Avg_Rating']],params[:filter])) %>
     <%= label_tag ("Restrictions:") %>
-    <%= select_tag(:restrictions, options_for_select([['All'],['Both'],['Moves'],['Time'],['None']])) %>
+    <%= select_tag(:restrictions, options_for_select([['All'],['Both'],['Moves','restriction_move'],['Time','restriction_time'],['None']],params[:restrictions])) %>
     <%= submit_tag "Search", class: "btn btn-small btn-primary" %>
 <% end %>
 
@@ -25,7 +25,7 @@
 
 <% @levels.each do |level| %>
   <tr>
-    <td><%= level.level_id %></td>
+    <td><%= level.id %></td>
     <td><%= level.user_name %></td>
     <td><%= level.avg_rating %></td>
     <td><%= level.title %></td>

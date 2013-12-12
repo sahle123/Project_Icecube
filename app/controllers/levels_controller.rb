@@ -2,15 +2,30 @@ class LevelsController < ApplicationController
   # GET /levels
   # GET /levels.json
   def index
-    @filter = params[:filter]
-    @restriction = params[:restriction]
-    @levels = Level.find(:all, :order => @filter, :conditions => @restriction)
+    @filter = (params[:filter] != nil)? params[:filter] : "title"
+    @restrictions = restrictionType
+    @levels = Level.find(:all, :order => @filter, :conditions => @restrictions )
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @levels }
     end
   end
-
+  def restrictionType
+    temp = [ "restriction_time > ? or restriction_move > ?", 0, 0 ]
+    case params[:restrictions]
+      when 'All'
+        temp = [ "restriction_time > ? or restriction_move > ?", 0, 0 ]
+      when 'Both'
+        temp = [ "restriction_time > ? and restriction_move > ?", 0, 0 ]
+      when "restriction_move"
+        temp = [ "restriction_move > ? and restriction_time == ?", 0, 0 ]
+      when "restriction_time"
+        temp = [ "restriction_move == ? and restriction_time > ?", 0, 0 ]
+      else
+        temp = [ "restriction_time == ? and restriction_move == ?", 0, 0 ]
+    end
+    temp
+  end
   # GET /levels/1
   # GET /levels/1.json
   def show

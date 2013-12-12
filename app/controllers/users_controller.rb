@@ -4,9 +4,6 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-#   @movies = Movie.find(:all, :order => @sort, :conditions => { :rating => @checked_ratings.keys})
-
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
