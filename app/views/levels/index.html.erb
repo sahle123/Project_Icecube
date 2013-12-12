@@ -1,9 +1,12 @@
 <h1>Listing levels</h1>
 <%= form_tag("/levels", method: "get") do %>
-    <%= label_tag ("Sort By:") %>
-    <%= select_tag(:filter, options_for_select([['Title','title'],['User Name','user_name'],['Release Date','created_at'],['Rating','Avg_Rating']],params[:filter])) %>
-    <%= label_tag ("Restrictions:") %>
-    <%= select_tag(:restrictions, options_for_select([['All'],['Both'],['Moves','restriction_move'],['Time','restriction_time'],['None']],params[:restrictions])) %>
+    <!-- %= label_tag ("Sort By:") % -->
+    Sort By:
+    <%= select_tag(:sort, options_for_select([['Title','title'],['User Name','user_name'],['Release Date','created_at'],['Rating','Avg_Rating']],params[:sort]), :style => "width:130px") %>
+    <%= select_tag(:direction, options_for_select([['ASC'],['DESC']], params[:direction]), :style => "width:70px")  %>
+    <!-- %= label_tag ("Restrictions:") % -->
+    Restrictions:
+    <%= select_tag(:restrictions, options_for_select([['All'],['Both'],['Moves','restriction_move'],['Time','restriction_time'],['None']],params[:restrictions]), :style => "width:80px") %>
     <%= submit_tag "Search", class: "btn btn-small btn-primary" %>
 <% end %>
 

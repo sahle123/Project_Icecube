@@ -2,16 +2,19 @@ class LevelsController < ApplicationController
   # GET /levels
   # GET /levels.json
   def index
-    @filter = (params[:filter] != nil)? params[:filter] : "title"
-    @restrictions = restrictionType
-    @levels = Level.find(:all, :order => @filter, :conditions => @restrictions )
+    # Used to filter and sort Levels table
+    @sort = (params[:sort] != nil)? params[:sort] : "title"
+    @direction = (params[:direction])? params[:direction] : "ASC"
+    @levels = Level.order(@sort + " "  + @direction).where(restrictionType)
+    #@levels = Level.find(:all, :order => @sort, :conditions => restrictionType )
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @levels }
     end
   end
+  # Filter based on the type of game (based on optional game restrictions)
   def restrictionType
-    temp = [ "restriction_time > ? or restriction_move > ?", 0, 0 ]
     case params[:restrictions]
       when 'All'
         temp = [ "restriction_time > ? or restriction_move > ?", 0, 0 ]
@@ -21,8 +24,10 @@ class LevelsController < ApplicationController
         temp = [ "restriction_move > ? and restriction_time == ?", 0, 0 ]
       when "restriction_time"
         temp = [ "restriction_move == ? and restriction_time > ?", 0, 0 ]
-      else
+      when 'None'
         temp = [ "restriction_time == ? and restriction_move == ?", 0, 0 ]
+      else
+        temp = [ "restriction_time > ? or restriction_move > ?", 0, 0 ]
     end
     temp
   end
