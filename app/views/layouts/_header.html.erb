@@ -11,7 +11,7 @@
     <% if signed_in? %>
       <p style="float:right; margin-top:0; color:white">
         <%= current_user.user_name %>
-        <%= link_to "Sign out", signout_path, method: 'delete' %>
+        <%= link_to "Sign out", signout_path, {method: 'delete', :style=>'color:#FFFFFF;'} %>
       </p>
     <%else%>
       <p style="float:right; margin-top:0; color:white">
