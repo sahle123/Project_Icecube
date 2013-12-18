@@ -6,19 +6,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">Project Ice Cube</a>
-      <!-- login/signup from the naviagation nav_bar  -->
-    <% if signed_in? %>
-      <p style="float:right; margin-top:0; color:white">
-        <%= current_user.user_name %>
-        <%= link_to "Sign out", signout_path, {method: 'delete', :style=>'color:#FFFFFF;'} %>
-      </p>
-    <%else%>
-      <p style="float:right; margin-top:0; color:white">
-        <%= link_to "Sign In", signin_path, {:style=>'color:#FFFFFF;'} %> / 
-        <%= link_to 'Sign Up', signup_path, {:style=>'color:#FFFFFF;'} %> 
-      </p>
-    <%end%>
+      <a class="brand" href="/home"><img width="88px" height="66px" src="/assets/icecubelogo.png">Project Ice Cube</a>
+      
   <!-- Elements of the navigation bar, have the ability -->
   <!-- to collapse to a single button                   -->
       <nav class="nav-collapse">
@@ -27,6 +16,16 @@
           <li><%= link_to "News", news_path %></li>
           <li><%= link_to 'Levels', levels_path %></li>
           <li><%= link_to 'Create Level', new_level_path %></li>
+          <li class="divider-vertical"></li>
+          <!-- login/signup from the naviagation nav_bar  -->
+          <% if signed_in? %>
+          <li><%= link_to current_user.user_name, @current_user %></li>
+          <li><%= link_to "Sign out", signout_path, {method: 'delete'} %></li>
+          <% else %>
+            <li><%= link_to "Sign In", signin_path %></li>
+            
+            <li><%= link_to 'Sign Up', signup_path %></li>
+          <% end %>
         </ul>
       </nav>
     </div>

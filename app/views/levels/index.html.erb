@@ -7,50 +7,33 @@
     <!-- %= label_tag ("Restrictions:") % -->
     Restrictions:
     <%= select_tag(:restrictions, options_for_select([['All'],['Both'],['Moves','restriction_move'],['Time','restriction_time'],['None']],params[:restrictions]), :style => "width:80px") %>
-    <%= submit_tag "Search", class: "btn btn-small btn-primary" %>
+    <%= submit_tag "Search", class: "btn  btn-inverse" %>
 <% end %>
-
-
-
-<table>
-  <tr>
-    <th>Level id</th>
-    <th>User name</th>
-    <th>Avg rating</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Restriction</th>
-    <th>Level string</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @levels.each do |level| %>
-  <tr>
-    <td><%= level.id %></td>
-    <td><%= level.user_name %></td>
-    <td><%= level.avg_rating %></td>
-    <td><%= level.title %></td>
-    <td><%= level.description %></td>
-    <td> 
-        <%if level.restriction_move != nil and (level.restriction_move > 0)%>
-        moves: <%= level.restriction_move%> 
-        <%end%>
-        <%if level.restriction_time != nil and level.restriction_time > 0 %> 
-        <%=level.restriction_time%>sec
-        <%end%>
-        <%if level.restriction_time == nil or 0 and level.restriction_move == nil or 0%>
-        none
-        <%end%>
-    </td>
-    <td><%= level.level_string %></td>
-    <td><%= link_to 'Show', level %></td>
-    <td><%= link_to 'Edit', edit_level_path(level) %></td>
-    <td><%= link_to 'Destroy', level, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<div class="panel panel-default">
+        <div class="panel-heading"><%= level.title %> by: <%= level.user_name %></div>
+        <div class="panel-body">
+            <% if level.restriction_move > 0 and level.restriction_time > 0 %>
+                <img src="assets/both.jpg">
+            <% elsif level.restriction_move == 0 and level.restriction_time > 0 %>
+                <img src="assets/time.jpg">
+            <% elsif level.restriction_move > 0 and level.restriction_time == 0 %>
+                <img src="assets/move.jpg">
+            <% elsif level.restriction_move == 0 and level.restriction_time == 0 %>
+                <img src="assets/none.jpg">
+            <% end %>
+            <%= level.avg_rating %>/5 
+        
+            <%= level.description %>
+    
+            <%= link_to 'Show', level %>
+            <%= link_to 'Edit', edit_level_path(level) %>
+            <%= link_to 'Destroy', level, confirm: 'Are you sure?', method: :delete %>
+        </div>
+    </div>
 <% end %>
-</table>
+
 
 <br />
 
