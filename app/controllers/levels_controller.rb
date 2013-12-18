@@ -1,6 +1,7 @@
 class LevelsController < ApplicationController
   # GET /levels
   # GET /levels.json
+  
   def index
     # Used to filter and sort Levels table
     @sort = (params[:sort] != nil)? params[:sort] : "title"
@@ -17,7 +18,7 @@ class LevelsController < ApplicationController
   def restrictionType
     case params[:restrictions]
       when 'All'
-        temp = [ "restriction_time > ? or restriction_move > ?", 0, 0 ]
+        temp = [ "restriction_time >= ? or restriction_move >= ?", 0, 0 ]
       when 'Both'
         temp = [ "restriction_time > ? and restriction_move > ?", 0, 0 ]
       when "restriction_move"
@@ -27,7 +28,7 @@ class LevelsController < ApplicationController
       when 'None'
         temp = [ "restriction_time == ? and restriction_move == ?", 0, 0 ]
       else
-        temp = [ "restriction_time > ? or restriction_move > ?", 0, 0 ]
+        temp = [ "restriction_time >= ? or restriction_move >= ?", 0, 0 ]
     end
     temp
   end

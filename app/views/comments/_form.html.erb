@@ -1,0 +1,16 @@
+<% if signed_in? %>
+
+	<%= form_for(controller: comment) do |f| %>
+		<div class="field">
+	    <%= f.label "Your Comment:" %><br />
+	    <%= f.hidden_field :user_name, :value => current_user.user_name %>
+	    <%= f.text_field :title %>
+	    <%= f.text_area :description %>
+	  </div>
+	  <div class="actions">
+	    <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+	  </div>
+	<% end %>
+<% else %>
+	Please Login to add a comment
+<% end %>
