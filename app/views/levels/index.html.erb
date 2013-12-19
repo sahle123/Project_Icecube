@@ -1,13 +1,14 @@
 <style type="text/css">
 .level_header
-{
+{   
+    position: relative;
     background-color:#4282A3;
     font-size: 16px;
     padding : 2px;
 }
 .level_content
 {
-border-left:1px solid #0099CC; 
+    border-left:1px solid #0099CC; 
     height:128px;
     position:relative;
 
@@ -21,24 +22,47 @@ border-left:1px solid #0099CC;
 }
 .level_button{
     /*show, edit, and destroy text*/
-    position:absolute;
-    bottom: 0;
-    right: 0;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 .level_creator{
+    padding-left: 5px;
+    padding-top: 5px;
     float: left;
 }
 .level_rating{
+    padding-right: 5px;
+    padding-top: 5px;
     float: right;
 }
-.level_clickable{
-    background-color: #000000;
-    position: absolute;
-    padding-top: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 40px;
+
+.class_name span {
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:2;
+    top:0px;
+    left:0px;
 }
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+li{
+    display: inline;
+}
+
+
+/*
+
+%= button_to 'Edit', edit_level_path(level), method: :get, class: "btn-small btn-warning" %
+                %= button_to 'Destroy', level, confirm: 'Are you sure?', method: :delete, class: "btn-small btn-danger" %
+
+*/
+
 </style>
 <h1>Listing levels</h1>
 <link rel="stylesheet" type="text/css" href="assets/level.css">
@@ -55,7 +79,14 @@ border-left:1px solid #0099CC;
 
 <% @levels.each do |level| %>
 <div class="panel panel-default">
-        <div class="level_header"><h3><%= level.title %></h4></div>
+    <div class="level_header"><h3><%= level.title %></h3>
+        <div class="level_button">
+                
+                <%=link_to "edit", edit_level_path(level), :style=>'color:#FFFFFF;' %>
+                <b style="color:#FFFFFF"> |</b> 
+                <%=link_to "delete", level, {confirm: 'Are you sure?', method: 'delete', :style=>'color:#FFFFFF;'}%>
+            </div>
+    </div>
         <div class="level_content">
             <div class="level_divider">
                 <% if level.restriction_move > 0 and level.restriction_time > 0 %>
@@ -68,18 +99,28 @@ border-left:1px solid #0099CC;
                     <img src="assets/none.jpg">
                 <% end %>
             </div>
-            <div class="level_clickable"><%link_to 'HERE', level%></div>
 
-            <div class="level_creator"> <%= level.user_name %> </div>
+
+
+            <div class="level_creator" style="font-size:150%">Created by: <%= level.user_name %> </div>
+
+            <div class="level_rating" style="font-size:150%"> 
+                <% (1..level.avg_rating).each do |i| %>
+                    ★
+                <% end %>
+                <% (1..(5-level.avg_rating)).each do |i| %>
+                    ☆ 
+                <% end %>
             
-            <div class="level_rating"> <%= level.avg_rating %>/5 </div>
-            </br>
-            <%= level.description %>
-            <div class="level_button">
-                <%= link_to 'Show', level %>
-                <%= link_to 'Edit', edit_level_path(level) %>
-                <%= link_to 'Destroy', level, confirm: 'Are you sure?', method: :delete %>
             </div>
+            <br/>
+            <hr>
+
+            <%= level.description %>
+            <div class="class_name">
+                <%= link_to content_tag(:span), level%>
+            </div>
+
         </div>
     </div>
 <% end %>
