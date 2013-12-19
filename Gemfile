@@ -1,9 +1,10 @@
 source 'http://rubygems.org'
 
 ruby '2.0.0'
+
 gem 'rails', '3.1.0'
 gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+#gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 
 # Bundle edge Rails instead:
@@ -32,8 +33,8 @@ end
 # in production environments by default.
 group :assets do
   gem 'therubyracer'              
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
+  #gem 'sass-rails', "  ~> 3.1.0"
+  #gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 end
 
