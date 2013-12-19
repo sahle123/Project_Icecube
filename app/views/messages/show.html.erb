@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+
+<p>
+  <b>To:</b>
+  <%= @message.reciever %>
+</p>
+
+  <b>From:</b>
+  <%= @message.sender %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @message.subject %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @message.content %>
+</p>
+
+<p>
+  <b>Read:</b>
+  <%= @message.read = true %>
+</p>
+
+
+<%= link_to 'Reply', new_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>

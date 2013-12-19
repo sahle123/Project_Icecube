@@ -11,21 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131206001052) do
+ActiveRecord::Schema.define(:version => 20131219082237) do
 
   create_table "comments", :force => true do |t|
-    t.integer  "comment_id"
     t.string   "user_name"
     t.integer  "update_id"
     t.integer  "level_id"
     t.string   "title"
-    t.text     "description"
+    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "levels", :force => true do |t|
-    t.integer  "level_id"
     t.string   "user_name"
     t.integer  "avg_rating"
     t.string   "title"
@@ -37,8 +35,17 @@ ActiveRecord::Schema.define(:version => 20131206001052) do
     t.datetime "updated_at"
   end
 
+  create_table "messages", :force => true do |t|
+    t.string   "sender"
+    t.string   "reciever"
+    t.string   "subject"
+    t.string   "content"
+    t.boolean  "read"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ratings", :force => true do |t|
-    t.integer  "rating_id"
     t.string   "user_name"
     t.integer  "level_id"
     t.integer  "rating"
@@ -47,7 +54,6 @@ ActiveRecord::Schema.define(:version => 20131206001052) do
   end
 
   create_table "scores", :force => true do |t|
-    t.integer  "score_id"
     t.string   "user_name"
     t.integer  "level_id"
     t.integer  "score"
@@ -56,7 +62,6 @@ ActiveRecord::Schema.define(:version => 20131206001052) do
   end
 
   create_table "updates", :force => true do |t|
-    t.integer  "update_id"
     t.string   "title"
     t.text     "description"
     t.string   "user_name"

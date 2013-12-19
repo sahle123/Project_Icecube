@@ -1,8 +1,11 @@
 Icecube::Application.routes.draw do
 
 
+  resources :messages
+
   #resources :static_pages, only: [:home, :help]
   resources :levels
+  resources :messages
   resources :users
   resources :commensts
   resources :updates

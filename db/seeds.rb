@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 updates = [
-			{:title => "Baby steps", :description => "Ladies and Gentlemen, I present to you a new kind of social interaction", :user_name => "butts"},
+			{:title => "Layout Changes", :description => "Added simple changes to make site look more appealing", :user_name => "butts"},
 			{:title => "Setting Up Rspec", :description => "We're currently working to get rspec setup", :user_name => "butts"}
 		]
 
@@ -22,6 +22,11 @@ levels = [
 			{:user_name => "butts", :avg_rating => "3.5", :title => "Andes", :description => "A dangerous Yeti awaits",:restriction_move => "10", :restriction_time => "60"},
 			{:user_name => "jacob", :avg_rating => "4", :title => "The Darkest Souls", :description => "There's no time",:restriction_move => "0", :restriction_time => "50"},
 		]
+messages = [
+			{:sender => "drbees", :reciever => "butts", :subject => "Hey You", :content => "What's this an inbox woefully underpopulated by bees!?", :read => false},
+			{:sender => "butts", :reciever => "drbees", :subject => "Stop it", :content => "Stop sending me messages about Bees!", :read => false}
+			]
+
 updates.each do |update|
 	Update.create!(update)
 end
@@ -32,4 +37,8 @@ end
 
 levels.each do |level|
 	Level.create!(level)
+end
+
+messages.each do |message|
+	Message.create!(message)
 end

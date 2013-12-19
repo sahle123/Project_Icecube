@@ -25,7 +25,7 @@
               <li role="presentation menuitem" class="dropdown-header" tabindex="-1">Signed in as <%= @current_user.user_name %></li>
               <li role="presentation menuitem" class="divider"></li>
               <li role="presentation menuitem" tabindex="-1"><%= link_to "Profile Page", @current_user %></li>
-              <li role="presentation menuitem" tableindex="-1"><a>Messages <span class="badge inverse">0</span></a></li>
+              <li role="presentation menuitem" tableindex="-1"><a href="/messages">Messages <span class="badge inverse">0</span></a></li>
               <li role="presentation menuitem" tabindex="-1"> <%= link_to "Sign out", signout_path, {method: 'delete'} %></li>
             </ul>
           </li>

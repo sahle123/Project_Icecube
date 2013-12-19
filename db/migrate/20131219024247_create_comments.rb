@@ -6,7 +6,6 @@ class CreateComments < ActiveRecord::Migration
       t.integer :level_id
       t.string :title
       t.string :content
-
       t.timestamps
     end
   end
