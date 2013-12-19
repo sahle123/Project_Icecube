@@ -1,4 +1,47 @@
+<style type="text/css">
+.level_header
+{
+    background-color:#4282A3;
+    font-size: 16px;
+    padding : 2px;
+}
+.level_content
+{
+border-left:1px solid #0099CC; 
+    height:128px;
+    position:relative;
+
+    background-color:#B3CDDA
+
+}
+.level_divider {
+
+    /*puts image on the left*/
+    float:left;
+}
+.level_button{
+    /*show, edit, and destroy text*/
+    position:absolute;
+    bottom: 0;
+    right: 0;
+}
+.level_creator{
+    float: left;
+}
+.level_rating{
+    float: right;
+}
+.level_clickable{
+    background-color: #000000;
+    position: absolute;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+}
+</style>
 <h1>Listing levels</h1>
+<link rel="stylesheet" type="text/css" href="assets/level.css">
 <%= form_tag("/levels", method: "get") do %>
     <!-- %= label_tag ("Sort By:") % -->
     Sort By:
@@ -12,24 +55,31 @@
 
 <% @levels.each do |level| %>
 <div class="panel panel-default">
-        <div class="panel-heading"><%= level.title %> by: <%= level.user_name %></div>
-        <div class="panel-body">
-            <% if level.restriction_move > 0 and level.restriction_time > 0 %>
-                <img src="assets/both.jpg">
-            <% elsif level.restriction_move == 0 and level.restriction_time > 0 %>
-                <img src="assets/time.jpg">
-            <% elsif level.restriction_move > 0 and level.restriction_time == 0 %>
-                <img src="assets/move.jpg">
-            <% elsif level.restriction_move == 0 and level.restriction_time == 0 %>
-                <img src="assets/none.jpg">
-            <% end %>
-            <%= level.avg_rating %>/5 
-        
+        <div class="level_header"><h3><%= level.title %></h4></div>
+        <div class="level_content">
+            <div class="level_divider">
+                <% if level.restriction_move > 0 and level.restriction_time > 0 %>
+                    <img src="assets/both.jpg">
+                <% elsif level.restriction_move == 0 and level.restriction_time > 0 %>
+                    <img src="assets/time.jpg">
+                <% elsif level.restriction_move > 0 and level.restriction_time == 0 %>
+                    <img src="assets/move.jpg">
+                <% elsif level.restriction_move == 0 and level.restriction_time == 0 %>
+                    <img src="assets/none.jpg">
+                <% end %>
+            </div>
+            <div class="level_clickable"><%link_to 'HERE', level%></div>
+
+            <div class="level_creator"> <%= level.user_name %> </div>
+            
+            <div class="level_rating"> <%= level.avg_rating %>/5 </div>
+            </br>
             <%= level.description %>
-    
-            <%= link_to 'Show', level %>
-            <%= link_to 'Edit', edit_level_path(level) %>
-            <%= link_to 'Destroy', level, confirm: 'Are you sure?', method: :delete %>
+            <div class="level_button">
+                <%= link_to 'Show', level %>
+                <%= link_to 'Edit', edit_level_path(level) %>
+                <%= link_to 'Destroy', level, confirm: 'Are you sure?', method: :delete %>
+            </div>
         </div>
     </div>
 <% end %>
