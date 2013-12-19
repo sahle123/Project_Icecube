@@ -26,16 +26,14 @@
 	</head>
 
 	<!-- Display page -->
-	<body>
+	<body background="assets/background.png">
 		<!-- Navigation Bar with Bootstrap CSS -->
 		<%if show_nav_bar%>
 			<%= render 'layouts/header' %>
 		<%end%>
-		<div class="container" style="padding-top:60px">
+		<div class="container" style="padding-top:60px;background-color:#ffffff;width:950px; margin:0 auto;">
 		    <div class="row" >
-		      <div class="span9"><%= yield %></div>
-		      <div class="span3">
-		      </div>
+		      <div class="span9" style="padding-left:40px;padding-right:40px"><%= yield %></div></div>
 		    </div>
 		</div>
 	</body>
